@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Football Team List</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="clearAllData()">Clear All Data</button>
+                <button class="btn btn-primary" onclick="exportData()">Export Data</button>
+            </div>
+        </header>
+        
+        <div class="stats-section">
+            <div class="stat-card">
+                <h3>Total Submissions</h3>
+                <p class="stat-number" id="totalSubmissions">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <p class="stat-number" id="totalStudents">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Latest Submission</h3>
+                <p class="stat-number" id="latestSubmission">-</p>
+            </div>
+        </div>
+        
+        <div class="submissions-section">
+            <h2>Submitted Team Lists</h2>
+            <div id="submissionsContainer">
+                <p class="no-data">No submissions yet. Waiting for team data...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="admin-script.js"></script>
+</body>
+</html>

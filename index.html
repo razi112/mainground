@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Team List</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Sign-In Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Football Team List</h1>
+        
+        <!-- Login Section -->
+        <div class="login-section" id="loginSection">
+            <h2>Login to Continue</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <!-- Google Sign-In Button -->
+            <div id="googleButtonLogin" class="google-signin-container"></div>
+            
+            <p class="signup-link">
+                Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a>
+            </p>
+        </div>
+        
+        <!-- Signup Section -->
+        <div class="signup-section" id="signupSection" style="display: none;">
+            <h2>Sign Up</h2>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name:</label>
+                    <input type="text" id="signupName" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <!-- Google Sign-In Button -->
+            <div id="googleButtonSignup" class="google-signin-container"></div>
+            
+            <p class="signup-link">
+                Already have an account? <a href="#" onclick="showLogin()">Login</a>
+            </p>
+        </div>
+        
+        <!-- Team List Form -->
+        <div class="team-form-section" id="teamFormSection" style="display: none;">
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="userName"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+            
+            <h2>Enter Team Details</h2>
+            
+            <form id="teamForm">
+                <div id="studentsContainer">
+                    <!-- Student 1 -->
+                    <div class="student-entry">
+                        <h3>Student 1</h3>
+                        <div class="form-group">
+                            <label for="student1">Student Name:</label>
+                            <input type="text" id="student1" name="student1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father1">Father's Name:</label>
+                            <input type="text" id="father1" name="father1" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 2 -->
+                    <div class="student-entry">
+                        <h3>Student 2</h3>
+                        <div class="form-group">
+                            <label for="student2">Student Name:</label>
+                            <input type="text" id="student2" name="student2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father2">Father's Name:</label>
+                            <input type="text" id="father2" name="father2" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 3 -->
+                    <div class="student-entry">
+                        <h3>Student 3</h3>
+                        <div class="form-group">
+                            <label for="student3">Student Name:</label>
+                            <input type="text" id="student3" name="student3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father3">Father's Name:</label>
+                            <input type="text" id="father3" name="father3" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 4 -->
+                    <div class="student-entry">
+                        <h3>Student 4</h3>
+                        <div class="form-group">
+                            <label for="student4">Student Name:</label>
+                            <input type="text" id="student4" name="student4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father4">Father's Name:</label>
+                            <input type="text" id="father4" name="father4" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 5 -->
+                    <div class="student-entry">
+                        <h3>Student 5</h3>
+                        <div class="form-group">
+                            <label for="student5">Student Name:</label>
+                            <input type="text" id="student5" name="student5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father5">Father's Name:</label>
+                            <input type="text" id="father5" name="father5" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 6 -->
+                    <div class="student-entry">
+                        <h3>Student 6</h3>
+                        <div class="form-group">
+                            <label for="student6">Student Name:</label>
+                            <input type="text" id="student6" name="student6" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father6">Father's Name:</label>
+                            <input type="text" id="father6" name="father6" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 7 -->
+                    <div class="student-entry">
+                        <h3>Student 7</h3>
+                        <div class="form-group">
+                            <label for="student7">Student Name:</label>
+                            <input type="text" id="student7" name="student7" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father7">Father's Name:</label>
+                            <input type="text" id="father7" name="father7" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 8 -->
+                    <div class="student-entry">
+                        <h3>Student 8</h3>
+                        <div class="form-group">
+                            <label for="student8">Student Name:</label>
+                            <input type="text" id="student8" name="student8" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father8">Father's Name:</label>
+                            <input type="text" id="father8" name="father8" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 9 -->
+                    <div class="student-entry">
+                        <h3>Student 9</h3>
+                        <div class="form-group">
+                            <label for="student9">Student Name:</label>
+                            <input type="text" id="student9" name="student9" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father9">Father's Name:</label>
+                            <input type="text" id="father9" name="father9" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Student 10 -->
+                    <div class="student-entry">
+                        <h3>Student 10</h3>
+                        <div class="form-group">
+                            <label for="student10">Student Name:</label>
+                            <input type="text" id="student10" name="student10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="father10">Father's Name:</label>
+                            <input type="text" id="father10" name="father10" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-submit">Submit Team List</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Google One Tap Configuration -->
+    <div id="g_id_onload"
+         data-client_id=""
+         data-callback="handleGoogleSignIn"
+         data-auto_prompt="false">
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
