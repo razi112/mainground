@@ -227,3 +227,82 @@ h3 {
     opacity: 0.7;
     cursor: not-allowed;
 }
+
+
+.admin-link-container {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.admin-link {
+    display: inline-block;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.admin-link:hover {
+    background: #667eea;
+    color: white;
+    transform: translateX(5px);
+}
+
+
+.admin-login-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.admin-login-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-login-link a:hover {
+    text-decoration: underline;
+}
+
+.admin-login-section-inline {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.admin-login-section-inline h2 {
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.admin-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.admin-info-box {
+    background: #f0f4ff;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 15px;
+    border: 1px solid #667eea;
+}
+
+.admin-info-box p {
+    margin: 0;
+    color: #667eea;
+    font-size: 13px;
+    font-weight: 600;
+}

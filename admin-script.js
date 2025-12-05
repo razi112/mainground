@@ -131,8 +131,91 @@ function exportData() {
     URL.revokeObjectURL(url);
 }
 
-// Auto-refresh every 5 seconds to check for new submissions
-setInterval(loadSubmissions, 5000);
+// Admin credentials (in production, use backend authentication)
+const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'admin123'
+};
 
-// Load submissions on page load
-loadSubmissions();
+// Check if admin is logged in on page load
+window.onload = function() {
+    checkAdminLogin();
+};
+
+// Check admin login status
+function checkAdminLogin() {
+    const adminLoggedIn = localStorage.getItem('adminLoggedIn');
+    const adminUsername = localStorage.getItem('adminUsername');
+    
+    if (adminLoggedIn === 'true' && adminUsername) {
+        showDashboard(adminUsername);
+    } else {
+        showLoginForm();
+    }
+}
+
+// Show login form
+function showLoginForm() {
+    document.getElementById('adminLoginSection').style.display = 'flex';
+    document.getElementById('adminDashboard').style.display = 'none';
+}
+
+// Show dashboard
+function showDashboard(username) {
+    document.getElementById('adminLoginSection').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'block';
+    document.getElementById('adminUserName').textContent = `Welcome, ${username}`;
+    
+    // Load submissions
+    loadSubmissions();
+    
+    // Auto-refresh every 5 seconds
+    if (!window.adminRefreshInterval) {
+        window.adminRefreshInterval = setInterval(loadSubmissions, 5000);
+    }
+}
+
+// Handle admin login form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('adminLoginForm');
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Validate credentials
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                // Store login status
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('adminUsername', username);
+                
+                // Show dashboard
+                showDashboard(username);
+                
+                // Clear form
+                loginForm.reset();
+            } else {
+                alert('Invalid username or password!\n\nPlease use:\nUsername: admin\nPassword: admin123');
+            }
+        });
+    }
+});
+
+// Admin logout
+function adminLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('adminLoggedIn');
+        localStorage.removeItem('adminUsername');
+        
+        // Clear refresh interval
+        if (window.adminRefreshInterval) {
+            clearInterval(window.adminRefreshInterval);
+            window.adminRefreshInterval = null;
+        }
+        
+        showLoginForm();
+    }
+}

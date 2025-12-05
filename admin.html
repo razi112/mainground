@@ -8,34 +8,88 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="dashboard-container">
+    <!-- Admin Login Section -->
+    <div class="admin-login-section" id="adminLoginSection">
+        <div class="admin-login-container">
+            <h1>Admin Login</h1>
+            <p class="admin-subtitle">Access the Football Team Dashboard</p>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username:</label>
+                    <input type="text" id="adminUsername" name="username" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" name="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Login as Admin</button>
+            </form>
+            
+            <div class="admin-info">
+                <p><strong>Default Credentials:</strong></p>
+                <p>Username: <code>admin</code></p>
+                <p>Password: <code>admin123</code></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (Hidden until login) -->
+    <div class="dashboard-wrapper" id="adminDashboard" style="display: none;">
+        <!-- Dashboard Header -->
         <header class="dashboard-header">
-            <h1>Admin Dashboard</h1>
+            <div class="header-left">
+                <h1>⚽ Admin Dashboard</h1>
+                <p class="header-subtitle">Football Team Management</p>
+            </div>
             <div class="header-actions">
+                <span class="admin-user" id="adminUserName"></span>
                 <button class="btn btn-secondary" onclick="clearAllData()">Clear All Data</button>
                 <button class="btn btn-primary" onclick="exportData()">Export Data</button>
+                <button class="btn btn-logout" onclick="adminLogout()">Logout</button>
             </div>
         </header>
         
-        <div class="stats-section">
-            <div class="stat-card">
-                <h3>Total Submissions</h3>
-                <p class="stat-number" id="totalSubmissions">0</p>
+        <!-- Main Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Statistics Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Total Submissions</h3>
+                        <p class="stat-number" id="totalSubmissions">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <h3>Total Students</h3>
+                        <p class="stat-number" id="totalStudents">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-content">
+                        <h3>Latest Submission</h3>
+                        <p class="stat-number" id="latestSubmission">-</p>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <h3>Total Students</h3>
-                <p class="stat-number" id="totalStudents">0</p>
-            </div>
-            <div class="stat-card">
-                <h3>Latest Submission</h3>
-                <p class="stat-number" id="latestSubmission">-</p>
-            </div>
-        </div>
-        
-        <div class="submissions-section">
-            <h2>Submitted Team Lists</h2>
-            <div id="submissionsContainer">
-                <p class="no-data">No submissions yet. Waiting for team data...</p>
+            
+            <!-- Submissions Section -->
+            <div class="submissions-section">
+                <div class="section-header">
+                    <h2>📋 Submitted Team Lists</h2>
+                    <div class="section-actions">
+                        <button class="btn-refresh" onclick="loadSubmissions()" title="Refresh">🔄</button>
+                    </div>
+                </div>
+                <div id="submissionsContainer">
+                    <p class="no-data">No submissions yet. Waiting for team data...</p>
+                </div>
             </div>
         </div>
     </div>

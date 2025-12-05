@@ -1,23 +1,40 @@
 // Get form sections
 const loginSection = document.getElementById('loginSection');
 const signupSection = document.getElementById('signupSection');
+const adminLoginSection = document.getElementById('adminLoginSection');
 const teamFormSection = document.getElementById('teamFormSection');
 
 // Get forms
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
+const adminLoginForm = document.getElementById('adminLoginForm');
 const teamForm = document.getElementById('teamForm');
+
+// Admin credentials
+const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'admin123'
+};
 
 // Show signup form
 function showSignup() {
     loginSection.style.display = 'none';
     signupSection.style.display = 'block';
+    adminLoginSection.style.display = 'none';
 }
 
 // Show login form
 function showLogin() {
     signupSection.style.display = 'none';
     loginSection.style.display = 'block';
+    adminLoginSection.style.display = 'none';
+}
+
+// Show admin login form
+function showAdminLogin() {
+    loginSection.style.display = 'none';
+    signupSection.style.display = 'none';
+    adminLoginSection.style.display = 'block';
 }
 
 // Initialize Google Sign-In when page loads
@@ -228,6 +245,27 @@ signupForm.addEventListener('submit', function(e) {
         showTeamForm();
     } else {
         alert('Please fill in all fields.');
+    }
+});
+
+// Handle admin login form submission
+adminLoginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+    
+    // Validate admin credentials
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        // Store admin login status
+        localStorage.setItem('adminLoggedIn', 'true');
+        localStorage.setItem('adminUsername', username);
+        
+        // Redirect to admin dashboard
+        alert('Admin login successful!\n\nRedirecting to Admin Dashboard...');
+        window.location.href = 'admin.html';
+    } else {
+        alert('Invalid admin credentials!\n\nPlease use:\nUsername: admin\nPassword: admin123');
     }
 });
 
